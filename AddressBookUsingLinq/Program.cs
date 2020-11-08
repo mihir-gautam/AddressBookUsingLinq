@@ -10,6 +10,7 @@ namespace AddressBookUsingLinq
             Console.WriteLine("Welcome to address book problem using Linq!");
             AddressBook addressBook = new AddressBook();
             addressBook.CreateTableColumns();
+            addressBook.InsertContactToTable();
         }
     }
 }
