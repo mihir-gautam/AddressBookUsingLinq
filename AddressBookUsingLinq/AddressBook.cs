@@ -67,6 +67,7 @@ namespace AddressBookUsingLinq
             Console.Write("\nEnter the last name of the contact : ");
             string lastName = Console.ReadLine();
             var record = from details in contactList
+                         where details.FirstName.ToLower().Equals(firstName.ToLower()) && details.LastName.ToLower().Equals(lastName.ToLower())
                          select details;
             foreach(var contact in record)
             {
