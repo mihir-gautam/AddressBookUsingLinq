@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookUsingLinq
 {
     class AddressBook
     {
+        public List<Contact> contactList = new List<Contact>();
         /// <summary>
         /// UC1 New empty database for address book created;
         /// </summary>
@@ -49,7 +51,53 @@ namespace AddressBookUsingLinq
             string email = Console.ReadLine();
 
             dataTable.Rows.Add(firstName, lastName, address, city, state, zip, phone, email);
+            Contact contact = new Contact() { FirstName = firstName, LastName = lastName, Address = address, City = city, 
+                State = state, ZipCode = zip, PhoneNumber = phone, EmailID = email };
+            contactList.Add(contact);
             Console.WriteLine("Contact details added successfully!");
+        }
+        /// <summary>
+        /// UC 4 Method to edit existing contact details
+        /// </summary>
+        /// <param name="contactList"></param>
+        public void EditExistingContact(List<Contact> contactList)
+        {
+            Console.Write("\nEnter the first name of the contact : ");
+            string firstName = Console.ReadLine();
+            Console.Write("\nEnter the last name of the contact : ");
+            string lastName = Console.ReadLine();
+            var record = from details in contactList
+                         select details;
+            foreach(var contact in record)
+            {
+                if(contact.FirstName.ToLower() == firstName.ToLower() && contact.LastName.ToLower() == lastName.ToLower())
+                {
+                    Console.WriteLine("Contact found! \nDetails are - ");
+                    Console.WriteLine(firstName+","+lastName+","+contact.Address+","+contact.City+","
+                        +contact.State+","+contact.ZipCode+","+contact.PhoneNumber+","+contact.EmailID);
+
+                    Console.Write("\nEnter the new address of the contact : ");
+                    contact.Address = Console.ReadLine();
+                    Console.Write("\nEnter the new city of the contact : ");
+                    contact.City = Console.ReadLine();
+                    Console.Write("\nEnter the new state of the contact : ");
+                    contact.State = Console.ReadLine();
+                    Console.Write("\nEnter the new zip code of the contact : ");
+                    contact.ZipCode = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("\nEnter the new phone number of the contact : ");
+                    contact.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+                    Console.Write("\nEnter the new email id of the contact : ");
+                    contact.EmailID = Console.ReadLine();
+                    
+                    Console.WriteLine("Contact details updated successfully!\n New details are -");
+                    Console.WriteLine(firstName + "," + lastName + "," + contact.Address + "," + contact.City + ","
+                        + contact.State + "," + contact.ZipCode + "," + contact.PhoneNumber + "," + contact.EmailID);
+                }
+                else
+                {
+                    Console.WriteLine("No such contact found.");
+                }
+            }
         }
     }
 }
