@@ -15,7 +15,7 @@ namespace AddressBookUsingLinq
             int loop = 1;
             while (loop == 1)
             {
-                Console.WriteLine("Enter your choice: \n1.Insert a new contact \n2.Edit existing contact \n3. Exit.");
+                Console.WriteLine("Enter your choice: \n1.Insert a new contact \n2.Edit existing contact \n3.Delete existing contact  \n4.Exit.");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -26,6 +26,9 @@ namespace AddressBookUsingLinq
                         addressBook.EditExistingContact(contactList);
                         break;
                     case 3:
+                        addressBook.DeleteContact();
+                        break;
+                    case 4:
                         loop = 0;
                         break;
                 }

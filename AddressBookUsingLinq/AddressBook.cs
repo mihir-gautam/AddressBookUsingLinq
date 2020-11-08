@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 
@@ -100,5 +101,25 @@ namespace AddressBookUsingLinq
                 }
             }
         }
+        /// <summary>
+        /// UC5 Method to delete a contact from the address book
+        /// </summary>
+        public void DeleteContact()
+        {
+            Console.Write("\nEnter the first name of the contact : ");
+            string firstName = Console.ReadLine();
+            Console.Write("\nEnter the last name of the contact : ");
+            string lastName = Console.ReadLine();
+            var record = from details in contactList
+                         where details.FirstName.ToLower().Equals(firstName.ToLower()) && details.LastName.ToLower().Equals(lastName.ToLower())
+                         select details;
+            if (record != null)
+            {
+                contactList.RemoveAll(item => item == record);
+                Console.WriteLine("Contact successfully deleted!");
+            }
+            else
+                Console.WriteLine("No such contact found.");
+            }
+        }
     }
-}
