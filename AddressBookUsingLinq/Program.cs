@@ -23,7 +23,8 @@ namespace AddressBookUsingLinq
             int loop = 1;
             while (loop == 1)
             {
-                Console.WriteLine("Enter your choice: \n1.Insert a new contact \n2.Edit existing contact \n3.Delete existing contact \n4.View contacts by state \n5.View contacts by city \n6.Exit.");
+                Console.WriteLine("Enter your choice: \n1.Insert a new contact \n2.Edit existing contact \n3.Delete existing contact \n4.View contacts by state \n5.View contacts by city " +
+                    "\n6.Count no. of contacts in a city \n7.Count no. of contacts in a state \n8.Exit.");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -50,6 +51,16 @@ namespace AddressBookUsingLinq
                         addressBook.RetrievePersonBelongingToACity(contactList, city);
                         break;
                     case 6:
+                        Console.Write("Enter the city: ");
+                        string cityName = Console.ReadLine();
+                        addressBook.CountPersonByCity(contactList,cityName);
+                        break;
+                    case 7:
+                        Console.Write("Enter the state: ");
+                        string stateName = Console.ReadLine();
+                        addressBook.CountPersonByState(contactList, stateName);
+                        break;
+                    case 8:
                         loop = 0;
                         break;
                 }

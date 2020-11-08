@@ -151,5 +151,31 @@ namespace AddressBookUsingLinq
                 Console.WriteLine(contact.FirstName + " " + contact.LastName);
             }
         }
+        /// <summary>
+        /// UC7 Method to retrieve number of contacts in particular city
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <param name="city"></param>
+        public void CountPersonByCity(List<Contact> contactList, string city)
+        {
+            var record = contactList.Where(x=>x.City.ToLower()==city.ToLower()).GroupBy(x => x.City).Select(x => new {city = x.Key, Count = x.Count() });
+            foreach (var contact in record)
+            {
+                Console.WriteLine(city + "-->" + contact.Count);
+            }
+        }
+        /// <summary>
+        /// UC7 Method to retrieve number of contacts in particular state
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <param name="state"></param>
+        public void CountPersonByState(List<Contact> contactList, string state)
+        {
+            var record = contactList.Where(x => x.State.ToUpper() == state.ToUpper()).GroupBy(x => x.State).Select(x => new { state = x.Key, Count = x.Count() });
+            foreach (var contact in record)
+            {
+                Console.WriteLine(state + "-->" + contact.Count);
+            }
+        }
     }
 }
