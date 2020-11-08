@@ -121,5 +121,35 @@ namespace AddressBookUsingLinq
             else
                 Console.WriteLine("No such contact found.");
             }
+        /// <summary>
+        /// UC6 Ability to retrieve person details by state
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <param name="state"></param>
+        public void RetrievePersonBelongingToAState(List<Contact> contactList,string state)
+        {
+            var record = from details in contactList
+                         where details.State.ToUpper() == state.ToUpper()
+                         select details;
+            foreach (var contact in record)
+            {
+                Console.WriteLine(contact.FirstName+" "+contact.LastName);
+            }
+        }
+        /// <summary>
+        /// UC6 Ability to retrieve person details by city
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <param name="city"></param>
+        public void RetrievePersonBelongingToACity(List<Contact> contactList,string city)
+        {
+            var record = from details in contactList
+                         where details.City.ToLower() == city.ToLower()
+                         select details;
+            foreach (var contact in record)
+            {
+                Console.WriteLine(contact.FirstName + " " + contact.LastName);
+            }
         }
     }
+}
