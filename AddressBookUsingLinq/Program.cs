@@ -24,7 +24,7 @@ namespace AddressBookUsingLinq
             while (loop == 1)
             {
                 Console.WriteLine("Enter your choice: \n1.Insert a new contact \n2.Edit existing contact \n3.Delete existing contact \n4.View contacts by state \n5.View contacts by city " +
-                    "\n6.Count no. of contacts in a city \n7.Count no. of contacts in a state \n8.Show alphabetically sorted contacts for a city \n9.Exit.");
+                    "\n6.Count no. of contacts in a city \n7.Count no. of contacts in a state \n8.Show alphabetically sorted contacts for a city \n9.Count contacts by contact type \n10.Exit.");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -66,6 +66,10 @@ namespace AddressBookUsingLinq
                         addressBook.SortAlphabeticallyByName(contactList, cityForContacts);
                         break;
                     case 9:
+                        Console.WriteLine("Count of contacts by contact type-");
+                        addressBook.CountContactsByContactType(contactList);
+                        break;
+                    case 10:
                         loop = 0;
                         break;
                 }

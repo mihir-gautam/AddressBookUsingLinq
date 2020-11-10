@@ -197,5 +197,13 @@ namespace AddressBookUsingLinq
                         + contact.State + "," + contact.ZipCode + "," + contact.PhoneNumber + "," + contact.EmailID);
             }
         }
+        public void CountContactsByContactType(List<Contact> contactList)
+        {
+            var record = contactList.GroupBy(x => x.ContactType).Select(x => new { ContactType = x.Key, Count = x.Count() });
+            foreach (var contact in record)
+            {
+                Console.WriteLine(contact.ContactType + "----->" + contact.Count);
+            }
+        }
     }
 }
