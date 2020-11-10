@@ -14,7 +14,7 @@ namespace AddressBookUsingLinq
             addressBook.CreateTableColumns();
             Contact contact1 = new Contact() {FirstName="Mihir",LastName="Gautam",Address="Kanpur",City="Kanpur",State="UP",ZipCode=202042,PhoneNumber=8686453524, EmailID="mihir@example.com" };
             Contact contact2 = new Contact() { FirstName = "Tushar", LastName = "Gautam", Address = "Kanpur", City = "Lucknow", State = "UP", ZipCode = 202042, PhoneNumber = 463463462, EmailID = "tushar@example.com" };
-            Contact contact3 = new Contact() { FirstName = "Ankit", LastName = "Tomar", Address = "Kanpur", City = "ALD", State = "MP", ZipCode = 202042, PhoneNumber = 586668876, EmailID = "ankit@example.com" };
+            Contact contact3 = new Contact() { FirstName = "Ankit", LastName = "Tomar", Address = "Kanpur", City = "Kanpur", State = "MP", ZipCode = 202042, PhoneNumber = 586668876, EmailID = "ankit@example.com" };
             Contact contact4 = new Contact() { FirstName = "Sharad", LastName = "Pal", Address = "Kanpur", City = "DEL", State = "Delhi", ZipCode = 202042, PhoneNumber = 857565643, EmailID = "sharad@example.com" };
             contactList.Add(contact1);
             contactList.Add(contact2);
@@ -24,7 +24,7 @@ namespace AddressBookUsingLinq
             while (loop == 1)
             {
                 Console.WriteLine("Enter your choice: \n1.Insert a new contact \n2.Edit existing contact \n3.Delete existing contact \n4.View contacts by state \n5.View contacts by city " +
-                    "\n6.Count no. of contacts in a city \n7.Count no. of contacts in a state \n8.Exit.");
+                    "\n6.Count no. of contacts in a city \n7.Count no. of contacts in a state \n8.Show alphabetically sorted contacts for a city \n9.Exit.");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
@@ -61,6 +61,11 @@ namespace AddressBookUsingLinq
                         addressBook.CountPersonByState(contactList, stateName);
                         break;
                     case 8:
+                        Console.Write("Enter the city: ");
+                        string cityForContacts = Console.ReadLine();
+                        addressBook.SortAlphabeticallyByName(contactList, cityForContacts);
+                        break;
+                    case 9:
                         loop = 0;
                         break;
                 }

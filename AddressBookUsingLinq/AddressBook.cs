@@ -177,5 +177,22 @@ namespace AddressBookUsingLinq
                 Console.WriteLine(state + "-->" + contact.Count);
             }
         }
+        /// <summary>
+        /// UC8 Method to sort contacts alphabetically by name for given city
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <param name="city"></param>
+        public void SortAlphabeticallyByName(List<Contact> contactList,string city)
+        {
+            var record = from contact in contactList
+                         where contact.City.ToLower()==city.ToLower()
+                         orderby contact.FirstName, contact.LastName
+                         select contact;
+            foreach (var contact in record)
+            {
+                Console.WriteLine(contact.FirstName +"," + contact.LastName + "," + contact.Address + "," + contact.City + ","
+                        + contact.State + "," + contact.ZipCode + "," + contact.PhoneNumber + "," + contact.EmailID);
+            }
+        }
     }
 }
