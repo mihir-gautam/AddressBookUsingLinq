@@ -12,10 +12,10 @@ namespace AddressBookUsingLinq
             AddressBook addressBook = new AddressBook();
             List<Contact> contactList = addressBook.contactList;
             addressBook.CreateTableColumns();
-            Contact contact1 = new Contact() {FirstName="Mihir",LastName="Gautam",Address="Kanpur",City="Kanpur",State="UP",ZipCode=202042,PhoneNumber=8686453524, EmailID="mihir@example.com" };
-            Contact contact2 = new Contact() { FirstName = "Tushar", LastName = "Gautam", Address = "Kanpur", City = "Lucknow", State = "UP", ZipCode = 202042, PhoneNumber = 463463462, EmailID = "tushar@example.com" };
-            Contact contact3 = new Contact() { FirstName = "Ankit", LastName = "Tomar", Address = "Kanpur", City = "Kanpur", State = "MP", ZipCode = 202042, PhoneNumber = 586668876, EmailID = "ankit@example.com" };
-            Contact contact4 = new Contact() { FirstName = "Sharad", LastName = "Pal", Address = "Kanpur", City = "DEL", State = "Delhi", ZipCode = 202042, PhoneNumber = 857565643, EmailID = "sharad@example.com" };
+            Contact contact1 = new Contact() {BookName = "Book1",ContactType = "Friend",FirstName="Mihir",LastName="Gautam",Address="Kanpur",City="Kanpur",State="UP",ZipCode=202042,PhoneNumber=8686453524, EmailID="mihir@example.com" };
+            Contact contact2 = new Contact() { BookName = "Book1", ContactType = "Friend", FirstName = "Tushar", LastName = "Gautam", Address = "Kanpur", City = "Lucknow", State = "UP", ZipCode = 202042, PhoneNumber = 463463462, EmailID = "tushar@example.com" };
+            Contact contact3 = new Contact() { BookName = "Book2", ContactType = "Family", FirstName = "Ankit", LastName = "Tomar", Address = "Kanpur", City = "Kanpur", State = "MP", ZipCode = 202042, PhoneNumber = 586668876, EmailID = "ankit@example.com" };
+            Contact contact4 = new Contact() { BookName = "Book3", ContactType = "Profession", FirstName = "Sharad", LastName = "Pal", Address = "Kanpur", City = "DEL", State = "Delhi", ZipCode = 202042, PhoneNumber = 857565643, EmailID = "sharad@example.com" };
             contactList.Add(contact1);
             contactList.Add(contact2);
             contactList.Add(contact3);

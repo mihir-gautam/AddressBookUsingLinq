@@ -20,6 +20,8 @@ namespace AddressBookUsingLinq
         /// </summary>
         public void CreateTableColumns()
         {
+            dataTable.Columns.Add("BookName", typeof(string));
+            dataTable.Columns.Add("ContactType", typeof(string));
             dataTable.Columns.Add("FirstName", typeof(string));
             dataTable.Columns.Add("LastName", typeof(string));
             dataTable.Columns.Add("Address", typeof(string));
@@ -28,6 +30,7 @@ namespace AddressBookUsingLinq
             dataTable.Columns.Add("ZipCode", typeof(int));
             dataTable.Columns.Add("PhoneNumber", typeof(long));
             dataTable.Columns.Add("EmailID", typeof(string));
+
         }
         /// <summary>
         /// UC3 Method to insert data into the address book contact table
@@ -92,7 +95,7 @@ namespace AddressBookUsingLinq
                     contact.EmailID = Console.ReadLine();
                     
                     Console.WriteLine("Contact details updated successfully!\n New details are -");
-                    Console.WriteLine(firstName + "," + lastName + "," + contact.Address + "," + contact.City + ","
+                    Console.WriteLine(contact.BookName + "," + contact.ContactType + "," + firstName + "," + lastName + "," + contact.Address + "," + contact.City + ","
                         + contact.State + "," + contact.ZipCode + "," + contact.PhoneNumber + "," + contact.EmailID);
                 }
                 else
@@ -190,7 +193,7 @@ namespace AddressBookUsingLinq
                          select contact;
             foreach (var contact in record)
             {
-                Console.WriteLine(contact.FirstName +"," + contact.LastName + "," + contact.Address + "," + contact.City + ","
+                Console.WriteLine(contact.BookName+","+contact.ContactType+","+contact.FirstName +"," + contact.LastName + "," + contact.Address + "," + contact.City + ","
                         + contact.State + "," + contact.ZipCode + "," + contact.PhoneNumber + "," + contact.EmailID);
             }
         }
